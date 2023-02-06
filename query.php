@@ -12,9 +12,20 @@ $result_array = array();
             $sql_probation = 'SELECT * FROM `user` where TIMESTAMPDIFF(YEAR, created_at, CURDATE())<2  ORDER BY first_name ASC';
             $probation = $db->query($sql_probation);
 
+            $result_array[] =  '<table style="width:100%">
+                <tr>
+                  <th>ID</th>
+                  <th>ФИО</th>
+                  <th>День рождения</th>
+                  <th>Дата трудоустройства</th>
+                </tr>
+                <tr>';
             while($row = $probation->fetch_assoc()){
-                $result_array[] =  'id = '.$row['id'].'. ФИО: '.$row['first_name'].' '.$row['last_name'].' '.
-                $row['middle_name'].'. День рождения: '.$row['data_of_birth'].'.'.'<br>'.'Дата поступления на работу: '.$row['created_at'].'<br>'.'<br>';
+                $result_array[] = '  <tr>
+                <td>'.$row['id'].'</td>'.
+                '<td>'.$row['first_name'].' '.$row['last_name'].' '.$row['middle_name'].'</td>'.
+                '<td>'.$row['data_of_birth'].'</td>'.
+                '<td>'.$row['created_at'].'</td> </tr>';
             }
             break;
 
@@ -30,9 +41,18 @@ $result_array = array();
             ON user_dismission.reason_id = dismission_reason.id';
             $dismission = $db->query($sql_dismission);
 
+            $result_array[] =  '<table style="width:100%">
+                <tr>
+                  <th>ID</th>
+                  <th>ФИО</th>
+                  <th>Причина увольнения</th>
+                </tr>
+                <tr>';
             while($row = $dismission->fetch_assoc()){
-                $result_array[] = 'id = '.$row['id'].'. ФИО: '.$row['first_name'].' '.$row['last_name'].' '.
-                $row['middle_name'].'.'.'<br>'.'Причина увольнения: '.$row['description'].'<br>'.'<br>';
+                $result_array[] = '  <tr>
+                <td>'.$row['id'].'</td>'.
+                '<td>'.$row['first_name'].' '.$row['last_name'].' '.$row['middle_name'].'</td>'.
+                '<td>'.$row['description'].'</td> </tr>';
             }
             break;
 
@@ -45,6 +65,13 @@ $result_array = array();
             $sql_leaders = 'SELECT leader_id FROM `department`';
             $leaders = $db->query($sql_leaders);
 
+            $result_array[] =  '<table style="width:100%">
+            <tr>
+              <th>Отдел</th>
+              <th>Начальник</th>
+              <th>Последний нанятый сотрудник (ФИО)</th>
+            </tr>
+            <tr>';
             while($row1 = $leaders->fetch_assoc()){
                 $sql_leaders_name = 
                 'SELECT 
@@ -62,8 +89,9 @@ $result_array = array();
                 $leader_name = $db->query($sql_leaders_name);
                 $row2 = $leader_name->fetch_assoc();
 
-                $result_array[] = 'Отдел: '.$row2['description'].'<br>'.'Начальник: '.$row2['first_name'].' '.$row2['last_name'].
-                ' '.$row2['middle_name'].'. '.'<br>';
+                $result_array[] = '  <tr>
+                <td>'.$row2['description'].'</td>'.
+                '<td>'.$row2['first_name'].' '.$row2['last_name'].' '.$row2['middle_name'].'</td>';
             
             
                 $sql_position = 
@@ -80,8 +108,7 @@ $result_array = array();
                 $position = $db->query($sql_position);
                 $row3 = $position->fetch_assoc();
 
-                $result_array[] = 'Последний нанятый сотрудник: '.$row3['first_name'].
-                '  '.$row3['last_name'].'  '.$row3['middle_name'].'  '.$row3['description'].'<br>'.'<br>'; 
+                $result_array[] = '<td>'.$row3['first_name'].' '.$row3['last_name'].' '.$row3['middle_name'].'</td></tr>';
             }
             break;
 
@@ -91,9 +118,20 @@ $result_array = array();
                 $sql_userAll = 'SELECT * FROM `user`';
                 $userAll = $db->query($sql_userAll);
     
+                $result_array[] =  '<table style="width:100%">
+                <tr>
+                  <th>id</th>
+                  <th>ФИО</th>
+                  <th>День рождения</th>
+                  <th>Дата трудоустройства</th>
+                </tr>
+                <tr>';
                 while($row = $userAll->fetch_assoc()){
-                    $result_array[] =  'id = '.$row['id'].'. ФИО: '.$row['first_name'].' '.$row['last_name'].' '.
-                    $row['middle_name'].'. День рождения: '.$row['data_of_birth'].'.'.'<br>'.'Дата поступления на работу: '.$row['created_at'].'<br>'.'<br>';
+                    $result_array[] = '  <tr>
+                    <td>'.$row['id'].'</td>'.
+                    '<td>'.$row['first_name'].' '.$row['last_name'].' '.$row['middle_name'].'</td>'.
+                    '<td>'.$row['data_of_birth'].'</td>'.
+                    '<td>'.$row['created_at'].'</td> </tr>';
                 }
                 break;
     }
