@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.h1{
+    text-align: center;
+    margin: 30px;
+}
+
+input{
+    padding: 10px;
+    margin: 10px;
+    font-size:medium;
+}
+#ButtonForm, #RadioForm{
+    text-align: center;
+    margin: 20px;
+}
+
+#result_print_block{
+    width: 600px;
+    margin: 0 auto;
+}
+
