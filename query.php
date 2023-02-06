@@ -120,7 +120,7 @@ $result_array = array();
     
                 $result_array[] =  '<table style="width:100%">
                 <tr>
-                  <th>id</th>
+                  <th>ID</th>
                   <th>ФИО</th>
                   <th>День рождения</th>
                   <th>Дата трудоустройства</th>
