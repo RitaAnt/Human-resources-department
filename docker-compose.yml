@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  web:
+    image: php:7.2-apache
+    build: 
+     dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    build: ./build/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: HRD
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password

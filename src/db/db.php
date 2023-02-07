@@ -2,8 +2,8 @@
 
 
 $dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
+$dbUsername = 'user';
+$dbPassword = 'password';
 $dbName = 'HRD';
 
 //Подключение к бд

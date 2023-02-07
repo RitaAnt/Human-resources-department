@@ -1,5 +1,5 @@
 <?php
-include __DIR__.'/db.php'; //подключение к базе данных
+include __DIR__.'/db/db.php'; //подключение к базе данных
 
 ?>
 <!DOCTYPE html>
@@ -8,13 +8,13 @@ include __DIR__.'/db.php'; //подключение к базе данных
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=ё, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style/main.css">
     <title>HRD</title>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
     crossorigin="anonymous"></script>
-    <script type="text/javascript" src="radio.js"></script>
-    <script type="text/javascript" src="button.js"></script>
+    <script type="text/javascript" src="js/radio.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
 </head>
 <body>
 
