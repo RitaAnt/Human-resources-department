@@ -1,7 +1,3 @@
-<?php
-include __DIR__.'/db/db.php'; //подключение к базе данных
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
