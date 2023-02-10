@@ -1,24 +1,34 @@
-version: '2'
+version: '3.8'
 
 services:
   web:
     build: .
+    container_name: HRD_web
     ports:
       - 80:80
     volumes:
       - ./src:/var/www/html
-    depends_on:
-      - db
+
 
   db:
     image: mysql:8.0
     container_name: HRD_db
-    build: ./build/mysql
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
-
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+      - 9906:3306
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: HRD
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      PMA_HOST: HRD_db
+    depends_on:
+      - db
